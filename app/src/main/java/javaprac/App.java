@@ -17,8 +17,12 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new CallBackPrac(),
-            new ComparatorPrac(),
+            new ProxyPrac(),
+            //new AnonymousInnerClassPrac(),
+            //new InnerClassPrac(),
+            //new LambdaPrac(),
+            //new CallBackPrac(),
+            //new ComparatorPrac(),
             new CloneablePrac()
         );
 

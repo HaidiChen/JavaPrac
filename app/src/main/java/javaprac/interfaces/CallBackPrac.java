@@ -31,6 +31,11 @@ public class CallBackPrac implements Prac {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        /*
+         * Need this to stop the timer, otherwise the program wouldn't exit
+         * if the time interval set in the Timer obj is <= 1 sec.
+         */
+        timer.stop();
     }
 
     @Override

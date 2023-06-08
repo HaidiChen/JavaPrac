@@ -20,9 +20,7 @@ public class ComparatorPrac implements Prac {
         Arrays.sort(FRIENDS, comp);
 
         System.out.println("After sorting by length, FRIENDS list: ");
-        for(String name : FRIENDS) {
-            System.out.println(name);
-        }
+        System.out.println(Arrays.toString(FRIENDS));
     }
 
     @Override
