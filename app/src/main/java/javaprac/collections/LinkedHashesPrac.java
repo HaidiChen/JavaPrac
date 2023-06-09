@@ -47,10 +47,51 @@ public class LinkedHashesPrac implements Prac {
         hm.put(4, "four");
         System.out.println("HashMap output:");
         hm.forEach((k, v) -> System.out.format("<%d, %s>\n", k, v));
+
+        /*
+         * LRUCache implemented with LinkedHashMap.
+         */
+        LRUCache<Integer, String> lru = new LRUCache<>(3);
+
+        lru.cache(1, "one");
+        lru.cache(2, "two");
+        lru.cache(3, "three");
+
+        lru.cache(4, "four");
+        lru.cache(3, "four");
+        System.out.println("final cache: " + lru);
     }
 
     @Override
     public String getDescription() {
         return "Practice LinkedHashSet/Map usage.";
+    }
+}
+
+class LRUCache<K, V> {
+
+    private final Map<K, V> caches = new LinkedHashMap<K, V>();
+    private final int maxCapacity;
+
+    public LRUCache(int maxCapacity) {
+        this.maxCapacity = maxCapacity;
+    }
+
+    public void cache(K key, V value) {
+        if (caches.containsKey(key)) {
+            caches.remove(key);
+        } else if (caches.size() >= maxCapacity) {
+            Iterator<K> iter = caches.keySet().iterator();
+            iter.next();
+            iter.remove();
+        }
+
+        caches.put(key, value);
+        System.out.println("current cache: " + caches);
+    }
+
+    @Override
+    public String toString() {
+        return caches.toString();
     }
 }
