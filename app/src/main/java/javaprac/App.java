@@ -11,13 +11,20 @@ import javaprac.aop.IOrder;
 import javaprac.aop.ObjectFactory;
 import javaprac.aop.Order;
 import javaprac.interfaces.*;
+import javaprac.generics.*;
+import javaprac.collections.*;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new ProxyPrac(),
+            new LinkedHashesPrac(),
+            new PriorityQueuePrac(),
+            new HashSetPrac(),
+            //new WildCardPrac(),
+            //new GenericClassPrac(),
+            //new ProxyPrac(),
             //new AnonymousInnerClassPrac(),
             //new InnerClassPrac(),
             //new LambdaPrac(),

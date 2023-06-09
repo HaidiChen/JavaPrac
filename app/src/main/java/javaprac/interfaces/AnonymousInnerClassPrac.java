@@ -26,38 +26,38 @@ public class AnonymousInnerClassPrac implements Prac {
     public String getDescription() {
         return "Practice anonymous inner class usage.";
     }
-}
 
-class TalkingClock {
+    private class TalkingClock {
 
-    private int interval;
-    private boolean beep;
+        private int interval;
+        private boolean beep;
 
-    public TalkingClock(int interval, boolean beep) {
-        this.interval = interval;
-        this.beep = beep;
-    }
-
-    public void start() {
-        Timer timer = new Timer(interval, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                System.out.println("At the tone, the time is " + new Date());
-                if (beep) {
-                    Toolkit.getDefaultToolkit().beep();
-                }
-            }
-        });
-
-        timer.start();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        public TalkingClock(int interval, boolean beep) {
+            this.interval = interval;
+            this.beep = beep;
         }
 
-        timer.stop();
-    }
+        public void start() {
+            Timer timer = new Timer(interval, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent event) {
+                    System.out.println("At the tone, the time is " + new Date());
+                    if (beep) {
+                        Toolkit.getDefaultToolkit().beep();
+                    }
+                }
+            });
 
+            timer.start();
+
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            timer.stop();
+        }
+
+    }
 }
