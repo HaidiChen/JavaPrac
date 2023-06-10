@@ -12,15 +12,18 @@ import javaprac.collections.*;
 import javaprac.generics.*;
 import javaprac.interfaces.*;
 import javaprac.reflection.*;
+import javaprac.concurrency.*;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new MethodPrac(),
-            new CopyOfPrac(),
-            new ReflectionPrac(),
+            new BlockingQueuePrac(),
+            //new SynchronizationPrac(),
+            //new MethodPrac(),
+            //new CopyOfPrac(),
+            //new ReflectionPrac(),
             //new LinkedHashesPrac(),
             //new PriorityQueuePrac(),
             //new HashSetPrac(),
