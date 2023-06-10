@@ -7,21 +7,23 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import javaprac.aop.IOrder;
-import javaprac.aop.ObjectFactory;
-import javaprac.aop.Order;
-import javaprac.interfaces.*;
-import javaprac.generics.*;
+import javaprac.aop.*;
 import javaprac.collections.*;
+import javaprac.generics.*;
+import javaprac.interfaces.*;
+import javaprac.reflection.*;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new LinkedHashesPrac(),
-            new PriorityQueuePrac(),
-            new HashSetPrac(),
+            new MethodPrac(),
+            new CopyOfPrac(),
+            new ReflectionPrac(),
+            //new LinkedHashesPrac(),
+            //new PriorityQueuePrac(),
+            //new HashSetPrac(),
             //new WildCardPrac(),
             //new GenericClassPrac(),
             //new ProxyPrac(),
@@ -30,7 +32,8 @@ public class App {
             //new LambdaPrac(),
             //new CallBackPrac(),
             //new ComparatorPrac(),
-            new CloneablePrac()
+            //new CloneablePrac(),
+            new DefaultPrac()
         );
 
         ALL_PRACS.forEach(prac -> prac.run());
