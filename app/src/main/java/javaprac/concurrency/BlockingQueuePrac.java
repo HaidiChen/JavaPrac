@@ -13,13 +13,12 @@ public class BlockingQueuePrac implements Prac {
     private static final int SEARCH_THREADS = 100;
     private static final File DUMMY = new File("");
     private static final BlockingQueue<File> queue = new ArrayBlockingQueue<>(FILE_QUEUE_SIZE);
+    private static final String FILE_PATH_INPUT = "/tmp/javaprac/blocking_queue_prac";
 
     @Override
     public void runPrac() {
-        try (Scanner in = new Scanner(System.in)) {
-            System.out.println("Enter base directory (e.g. /opt/jdkxx/src):");
+        try (Scanner in = new Scanner(new File(FILE_PATH_INPUT))) {
             String directory = in.nextLine();
-            System.out.println("Enter keyword (e.g., volatile):");
             String keyword = in.nextLine();
 
             Runnable enumerator = () -> {
@@ -29,8 +28,10 @@ public class BlockingQueuePrac implements Prac {
                 } catch (InterruptedException e) {
                 }
             };
+            // One provider
             new Thread(enumerator).start();
 
+            // Number of 'SEARCH_THREADS' consumers
             for (int i = 1; i <= SEARCH_THREADS; i++) {
                 Runnable searcher = () -> {
                     try {
@@ -50,6 +51,8 @@ public class BlockingQueuePrac implements Prac {
                 };
                 new Thread(searcher).start();
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

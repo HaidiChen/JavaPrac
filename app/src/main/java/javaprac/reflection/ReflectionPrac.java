@@ -1,5 +1,6 @@
 package javaprac.reflection;
 
+import java.io.*;
 import java.util.*;
 import java.lang.reflect.*;
 
@@ -8,14 +9,13 @@ import javaprac.Prac;
 
 public class ReflectionPrac implements Prac {
 
+    private static final String FILE_PATH_INPUT = "/tmp/javaprac/reflection_prac";
+
     @Override
     public void runPrac() {
-        String name;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter class name (e.g. java.util.Date):");
-        name = input.next();
+        try (Scanner input = new Scanner(new File(FILE_PATH_INPUT))) {
+            String name = input.next();
 
-        try {
             Class cl = Class.forName(name);
             Class supercl = cl.getSuperclass();
             String modifiers = Modifier.toString(cl.getModifiers());
@@ -34,6 +34,8 @@ public class ReflectionPrac implements Prac {
             System.out.println();
             printMethods(cl);
             System.out.println("}");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

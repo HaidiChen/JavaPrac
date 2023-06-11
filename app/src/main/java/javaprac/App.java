@@ -19,7 +19,10 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new BlockingQueuePrac(),
+            new ForkJoinPrac(),
+            new ThreadPoolPrac(),
+            new CallableFuturePrac(),
+            //new BlockingQueuePrac(),
             //new SynchronizationPrac(),
             //new MethodPrac(),
             //new CopyOfPrac(),
@@ -40,7 +43,6 @@ public class App {
         );
 
         ALL_PRACS.forEach(prac -> prac.run());
-
     }
 
     private static void streamPrac() throws ExecutionException, InterruptedException {
