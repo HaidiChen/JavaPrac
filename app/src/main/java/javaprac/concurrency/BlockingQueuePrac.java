@@ -28,7 +28,7 @@ public class BlockingQueuePrac implements Prac {
                 } catch (InterruptedException e) {
                 }
             };
-            // One provider
+            // One producer
             new Thread(enumerator).start();
 
             // Number of 'SEARCH_THREADS' consumers

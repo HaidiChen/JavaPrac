@@ -28,14 +28,15 @@ public class AQSPrac implements Prac {
                         int toAccount = (int) (bank.size() * Math.random());
                         double amount = MAX_AMOUNT * Math.random();
 
-                        // Use sync mechanism (i.e., locks) to prevent race condition
-                        bank.syncTransfer(fromAccount, toAccount, amount);
-
                         /*
                          * Following line doesn't use sync to lock resources, which could
                          * lead to race condition and unexpected result.
                          */
                         //bank.unSyncTransfer(fromAccount, toAccount, amount);
+
+                        // Use sync mechanism (i.e., locks) to prevent race condition
+                        //bank.syncTransferByMutex(fromAccount, toAccount, amount);
+                        bank.syncTransferBySemaphore(fromAccount, toAccount, amount);
 
                         Thread.sleep((int) (DELAY * Math.random()));
                     }
@@ -81,17 +82,19 @@ public class AQSPrac implements Prac {
 
         private final double[] accounts;
         private final Mutex mutex;
+        private final Semaphore semaphore;
 
         public Bank(int n, double initialBalance) {
             accounts = new double[n];
             Arrays.fill(accounts, initialBalance);
             mutex = new Mutex();
+            semaphore = new Semaphore(1);
         }
 
         /*
          * Use Customized lock (Mutex obj) to do the synchronization.
          */
-        public void syncTransfer(int from, int to, double amount) {
+        public void syncTransferByMutex(int from, int to, double amount) {
             mutex.lock();
             try {
                 if (accounts[from] < amount) {
@@ -100,6 +103,23 @@ public class AQSPrac implements Prac {
                 unSyncTransfer(from, to, amount);
             } finally {
                 mutex.unlock();
+            }
+        }
+
+        /*
+         * Use Semaphore to do the synchronization.
+         */
+        public void syncTransferBySemaphore(int from, int to, double amount) {
+            try {
+                semaphore.acquire();
+                if (accounts[from] < amount) {
+                    return;
+                }
+                unSyncTransfer(from, to, amount);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                semaphore.release();
             }
         }
 
