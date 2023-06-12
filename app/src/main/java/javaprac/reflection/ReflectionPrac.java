@@ -1,20 +1,23 @@
 package javaprac.reflection;
 
 import java.io.*;
-import java.util.*;
 import java.lang.reflect.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.util.*;
 
 import javaprac.Prac;
 
 
 public class ReflectionPrac implements Prac {
 
-    private static final String FILE_PATH_INPUT = "/tmp/javaprac/reflection_prac";
+    private static final String INPUT_FILE_PATH = "./src/main/resources/reflection_prac";
 
     @Override
     public void runPrac() {
-        try (Scanner input = new Scanner(new File(FILE_PATH_INPUT))) {
-            String name = input.next();
+        try {
+            Path filePath = Prac.getCwd().resolve(INPUT_FILE_PATH);
+            String name = new String(Files.readAllBytes(filePath), StandardCharsets.UTF_8).trim();
 
             Class cl = Class.forName(name);
             Class supercl = cl.getSuperclass();
@@ -34,7 +37,7 @@ public class ReflectionPrac implements Prac {
             System.out.println();
             printMethods(cl);
             System.out.println("}");
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package javaprac.concurrency;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -9,11 +10,12 @@ import javaprac.Prac;
 
 public class CallableFuturePrac implements Prac {
 
-    private static final String FILE_PATH_INPUT = "/tmp/javaprac/callable_future_prac";
+    private static final String INPUT_FILE_PATH = "./src/main/resources/callable_future_prac";
 
     @Override
     public void runPrac() {
-        try (Scanner in = new Scanner(new File(FILE_PATH_INPUT))) {
+        Path inputFilePath = Prac.getCwd().resolve(INPUT_FILE_PATH);
+        try (Scanner in = new Scanner(new File(inputFilePath.toString()))) {
             String directory = in.nextLine();
             String keyword = in.nextLine();
 

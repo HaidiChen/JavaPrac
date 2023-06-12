@@ -13,13 +13,15 @@ import javaprac.generics.*;
 import javaprac.interfaces.*;
 import javaprac.reflection.*;
 import javaprac.concurrency.*;
+import javaprac.streams.*;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new AQSPrac(),
+            new CountLongWordsPrac(),
+            //new AQSPrac(),
             //new ForkJoinPrac(),
             //new ThreadPoolPrac(),
             //new CallableFuturePrac(),
