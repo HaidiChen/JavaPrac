@@ -18,6 +18,16 @@ public class BlockingQueuePrac implements Prac {
 
     @Override
     public void runPrac() {
+        //searchKeywordInFiles();
+        simpleProducerConsumer();
+    }
+
+    @Override
+    public String getDescription() {
+        return "Practice concurrent programming - Blocking queues usage.";
+    }
+
+    private void searchKeywordInFiles() {
         Path inputFilePath = Prac.getCwd().resolve(INPUT_FILE_PATH);
         try (Scanner in = new Scanner(new File(inputFilePath.toString()))) {
             String directory = in.nextLine();
@@ -58,9 +68,90 @@ public class BlockingQueuePrac implements Prac {
         }
     }
 
-    @Override
-    public String getDescription() {
-        return "Practice concurrent programming - Blocking queues usage.";
+    private void simpleProducerConsumer() {
+        // Use blocking queue to store items.
+        BlockingQueue<String> itemQueue = new ArrayBlockingQueue<>(10);
+
+        Runnable produce = produceItems(itemQueue);
+        Runnable consume = consumeItems(itemQueue);
+
+        /*
+         * Create threads for producers & consumers.
+         * We could use different ways to create threads.
+         *
+         * 1. Use new Thread way to create.
+         */
+        //new Thread(produce).start();
+        //for (int threadNumber = 0; threadNumber < 20; threadNumber++) {
+        //    new Thread(consume).start();
+        //}
+
+        // 2. Use ThreadPool way to create.
+        ExecutorService pool = Executors.newCachedThreadPool();
+        pool.submit(produce);
+        pool.submit(consume);
+    }
+
+    private Runnable produceItems(BlockingQueue<String> itemQueue) {
+        Runnable producerTask = () -> {
+            while (true) {
+                for (int i = 0; i < 400; i++) {
+                    String item = Thread.currentThread() + " at time: " + System.nanoTime();
+                    // add() will throw IllegalStateException if blocking queue is full.
+                    //itemQueue.add(item);
+
+                    // offer() will return false if blocking queue is full.
+                    System.out.println("offer() succeeded ? " + itemQueue.offer(item));
+                    //try {
+                    //    Thread.sleep(1000);
+                    //} catch (InterruptedException e) {
+                    //    e.printStackTrace();
+                    //}
+
+                    // put() will block the execution if blocking queue is full.
+                    //try {
+                    //    itemQueue.put(item);
+                    //} catch (InterruptedException e) {
+                    //    e.printStackTrace();
+                    //}
+
+                    //System.out.println("Sent item " + item + " to blocking queue.");
+                }
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        return producerTask;
+
+    }
+
+    private Runnable consumeItems(BlockingQueue<String> itemQueue) {
+        Runnable consumerTask = () -> {
+            for (;;) {
+                String item = "placeholder";
+                // remove() will throw NoSuchElementException if blocking queue is empty.
+                //item = itemQueue.remove();
+
+                // poll() will return null if blocking queue is empty.
+                //item = itemQueue.poll();
+
+                // take() will block the execution if blocking queue is empty.
+                try {
+                    item = itemQueue.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println(Thread.currentThread() + " got item from queue: " + item);
+            }
+        };
+
+        return consumerTask;
     }
 
     private void enumerate(File directory) throws InterruptedException {
