@@ -20,12 +20,16 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
+            new ParallelStreamPrac(),
+            //new CollectResultPrac(),
+            //new OptionalPrac(),
+            //new StreamCreationPrac(),
             //new CountLongWordsPrac(),
             //new AQSPrac(),
             //new ForkJoinPrac(),
             //new ThreadPoolPrac(),
             //new CallableFuturePrac(),
-            new BlockingQueuePrac(),
+            //new BlockingQueuePrac(),
             //new SynchronizationPrac(),
             //new MethodPrac(),
             //new CopyOfPrac(),
