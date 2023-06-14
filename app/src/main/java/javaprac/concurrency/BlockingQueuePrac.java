@@ -1,7 +1,6 @@
 package javaprac.concurrency;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -14,12 +13,12 @@ public class BlockingQueuePrac implements Prac {
     private static final int SEARCH_THREADS = 100;
     private static final File DUMMY = new File("");
     private static final BlockingQueue<File> queue = new ArrayBlockingQueue<>(FILE_QUEUE_SIZE);
-    private static final String INPUT_FILE_PATH = "./src/main/resources/blocking_queue_prac";
+    private static final String INPUT_FILE_PATH = "src/main/resources/blocking_queue_prac";
 
     @Override
     public void runPrac() {
-        //searchKeywordInFiles();
-        simpleProducerConsumer();
+        searchKeywordInFiles();
+        //simpleProducerConsumer();
     }
 
     @Override
@@ -28,8 +27,7 @@ public class BlockingQueuePrac implements Prac {
     }
 
     private void searchKeywordInFiles() {
-        Path inputFilePath = Prac.getCwd().resolve(INPUT_FILE_PATH);
-        try (Scanner in = new Scanner(new File(inputFilePath.toString()))) {
+        try (Scanner in = new Scanner(new File(INPUT_FILE_PATH))) {
             String directory = in.nextLine();
             String keyword = in.nextLine();
 

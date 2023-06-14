@@ -14,13 +14,18 @@ import javaprac.interfaces.*;
 import javaprac.reflection.*;
 import javaprac.concurrency.*;
 import javaprac.streams.*;
+import javaprac.io.*;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new ParallelStreamPrac(),
+            new MemoryMapPrac(),
+            //new ObjectStreamPrac(),
+            //new RandomAccessFilePrac(),
+            //new TextFilePrac(),
+            //new ParallelStreamPrac(),
             //new CollectResultPrac(),
             //new OptionalPrac(),
             //new StreamCreationPrac(),

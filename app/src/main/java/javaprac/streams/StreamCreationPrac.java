@@ -3,7 +3,6 @@ package javaprac.streams;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -16,13 +15,13 @@ import javaprac.Prac;
 
 public class StreamCreationPrac implements Prac {
 
-    private static final String INPUT_FILE_PATH = "./src/main/resources/stream_creation_prac";
+    private static final String INPUT_FILE_PATH = "src/main/resources/stream_creation_prac";
 
     @Override
     public void runPrac() {
         try {
-            Path inputFilePath = Prac.getCwd().resolve(INPUT_FILE_PATH);
-            String contents = new String(Files.readAllBytes(inputFilePath), StandardCharsets.UTF_8);
+            String contents = new String(
+                    Files.readAllBytes(Paths.get(INPUT_FILE_PATH)), StandardCharsets.UTF_8);
 
             Stream<String> words = Stream.of(contents.split("\\PL+"));
             show("words", words);
@@ -30,7 +29,8 @@ public class StreamCreationPrac implements Prac {
             Stream<String> wordsAnotherWay = Pattern.compile("\\PL+").splitAsStream(contents);
             show("wordsAnotherWay", wordsAnotherWay);
 
-            try (Stream<String> lines = Files.lines(inputFilePath, StandardCharsets.UTF_8)) {
+            try (Stream<String> lines = Files.lines(
+                        Paths.get(INPUT_FILE_PATH), StandardCharsets.UTF_8)) {
                 show("lines", lines);
             }
 

@@ -11,7 +11,7 @@ import javaprac.Prac;
 
 public class CollectResultPrac implements Prac {
 
-    private static final String INPUT_FILE_PATH = "./src/main/resources/stream_creation_prac";
+    private static final String INPUT_FILE_PATH = "src/main/resources/stream_creation_prac";
 
     @Override
     public void runPrac() {
@@ -68,8 +68,8 @@ public class CollectResultPrac implements Prac {
     }
 
     private Stream<String> noVowels() throws IOException {
-        Path inputFilePath = Prac.getCwd().resolve(INPUT_FILE_PATH);
-        String contents = new String(Files.readAllBytes(inputFilePath), StandardCharsets.UTF_8);
+        String contents = new String(
+                Files.readAllBytes(Paths.get(INPUT_FILE_PATH)), StandardCharsets.UTF_8);
 
         Stream<String> words = Stream.of(contents.split("\\PL+"));
 

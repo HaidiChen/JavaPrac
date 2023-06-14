@@ -10,13 +10,13 @@ import javaprac.Prac;
 
 public class OptionalPrac implements Prac {
 
-    private static final String INPUT_FILE_PATH = "./src/main/resources/optional_prac";
+    private static final String INPUT_FILE_PATH = "src/main/resources/optional_prac";
 
     @Override
     public void runPrac() {
         try {
-            Path inputFilePath = Prac.getCwd().resolve(INPUT_FILE_PATH);
-            String contents = new String(Files.readAllBytes(inputFilePath), StandardCharsets.UTF_8);
+            String contents = new String(
+                    Files.readAllBytes(Paths.get(INPUT_FILE_PATH)), StandardCharsets.UTF_8);
 
             List<String> wordList = Arrays.asList(contents.split("\\PL+"));
 

@@ -11,13 +11,13 @@ import javaprac.Prac;
 
 public class ReflectionPrac implements Prac {
 
-    private static final String INPUT_FILE_PATH = "./src/main/resources/reflection_prac";
+    private static final String INPUT_FILE_PATH = "src/main/resources/reflection_prac";
 
     @Override
     public void runPrac() {
         try {
-            Path filePath = Prac.getCwd().resolve(INPUT_FILE_PATH);
-            String name = new String(Files.readAllBytes(filePath), StandardCharsets.UTF_8).trim();
+            String name = new String(
+                    Files.readAllBytes(Paths.get(INPUT_FILE_PATH)), StandardCharsets.UTF_8).trim();
 
             Class cl = Class.forName(name);
             Class supercl = cl.getSuperclass();
