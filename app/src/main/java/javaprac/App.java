@@ -9,19 +9,24 @@ import java.util.stream.IntStream;
 
 import javaprac.aop.*;
 import javaprac.collections.*;
+import javaprac.concurrency.*;
 import javaprac.generics.*;
 import javaprac.interfaces.*;
-import javaprac.reflection.*;
-import javaprac.concurrency.*;
-import javaprac.streams.*;
 import javaprac.io.*;
+import javaprac.networks.*;
+import javaprac.reflection.*;
+import javaprac.streams.*;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new MemoryMapPrac(),
+            new URLConnectionPrac(),
+            //new EchoServerPrac(),
+            //new InetAddressPrac(),
+            //new SocketPrac(),
+            //new MemoryMapPrac(),
             //new ObjectStreamPrac(),
             //new RandomAccessFilePrac(),
             //new TextFilePrac(),
