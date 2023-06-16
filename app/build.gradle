@@ -44,3 +44,10 @@ tasks.named('test') {
 run {
     standardInput = System.in
 }
+
+task encryptClass(type: JavaExec) {
+    group = 'Execution'
+    description = 'Encrypt a class file'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'javaprac.security.Caesar'
+}

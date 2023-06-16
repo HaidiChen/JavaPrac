@@ -16,6 +16,7 @@ import javaprac.interfaces.*;
 import javaprac.io.*;
 import javaprac.networks.*;
 import javaprac.reflection.*;
+import javaprac.security.*;
 import javaprac.streams.*;
 
 
@@ -24,7 +25,8 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new AnnotationPrac(),
+            new ClassLoaderPrac(),
+            //new AnnotationPrac(),
             //new URLConnectionPrac(),
             //new EchoServerPrac(),
             //new InetAddressPrac(),
