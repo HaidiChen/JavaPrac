@@ -7,6 +7,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import javaprac.annotations.*;
 import javaprac.aop.*;
 import javaprac.collections.*;
 import javaprac.concurrency.*;
@@ -17,12 +18,14 @@ import javaprac.networks.*;
 import javaprac.reflection.*;
 import javaprac.streams.*;
 
+
 public class App {
 
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new URLConnectionPrac(),
+            new AnnotationPrac(),
+            //new URLConnectionPrac(),
             //new EchoServerPrac(),
             //new InetAddressPrac(),
             //new SocketPrac(),
