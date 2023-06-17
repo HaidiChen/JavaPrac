@@ -25,7 +25,11 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new ClassLoaderPrac(),
+            new RSACryptPrac(),
+            //new AESCryptPrac(),
+            //new MessageDigestPrac(),
+            //new PermissionPrac(),
+            //new ClassLoaderPrac(),
             //new AnnotationPrac(),
             //new URLConnectionPrac(),
             //new EchoServerPrac(),

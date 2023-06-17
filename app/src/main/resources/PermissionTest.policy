@@ -1,0 +1,3 @@
+grant {
+    permission javaprac.security.WordCheckPermission "sex, drug, C++", "avoid";
+};
