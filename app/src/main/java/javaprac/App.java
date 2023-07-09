@@ -19,13 +19,24 @@ import javaprac.reflection.*;
 import javaprac.security.*;
 import javaprac.streams.*;
 
+import javaprac.gof.creational.abstractfactory.*;
+import javaprac.gof.creational.builder.*;
+import javaprac.gof.creational.factorymethods.*;
+import javaprac.gof.creational.prototype.*;
+import javaprac.gof.creational.singleton.*;
+
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
         List<Prac> ALL_PRACS = List.of(
-            new RSACryptPrac(),
+            //new SingletonPrac(),
+            //new PrototypePrac(),
+            //new FactoryMethodsPrac(),
+            //new BuilderPrac(),
+            //new AbstractFactoryPrac(),
+            //new RSACryptPrac(),
             //new AESCryptPrac(),
             //new MessageDigestPrac(),
             //new PermissionPrac(),
