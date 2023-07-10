@@ -14,6 +14,17 @@ import javaprac.reflection.*;
 import javaprac.security.*;
 import javaprac.streams.*;
 
+import javaprac.gof.behavioral.chainofresponsibility.*;
+import javaprac.gof.behavioral.command.*;
+import javaprac.gof.behavioral.interpreter.*;
+import javaprac.gof.behavioral.iterator.*;
+import javaprac.gof.behavioral.mediator.*;
+import javaprac.gof.behavioral.memento.*;
+import javaprac.gof.behavioral.observer.*;
+import javaprac.gof.behavioral.state.*;
+import javaprac.gof.behavioral.strategy.*;
+import javaprac.gof.behavioral.templatemethod.*;
+import javaprac.gof.behavioral.visitor.*;
 import javaprac.gof.creational.abstractfactory.*;
 import javaprac.gof.creational.builder.*;
 import javaprac.gof.creational.factorymethods.*;
@@ -28,13 +39,28 @@ import javaprac.gof.structural.flyweight.*;
 import javaprac.gof.structural.proxy.*;
 
 
-public class Pracs {
+public class Practices {
 
     public static List<Prac> getTestingPracs() {
-        return STRUCTURAL_DESIGN_PATTERNS_PRACS;
+        return BEHAVIORAL_DESIGN_PATTERNS_PRACS;
     }
 
-    public static List<Prac> STRUCTURAL_DESIGN_PATTERNS_PRACS = List.of(
+    private static final List<Prac> BEHAVIORAL_DESIGN_PATTERNS_PRACS = List.of(
+            new VisitorPrac(),
+            //new TemplateMethodPrac(),
+            //new StrategyPrac(),
+            //new StatePrac(),
+            //new ObserverPrac(),
+            //new MementoPrac(),
+            //new MediatorPrac(),
+            //new IteratorPrac(),
+            //new InterpreterPrac(),
+            //new CommandPrac(),
+            //new ChainOfResponsibilityPrac(),
+            new DefaultPrac()
+    );
+
+    private static final List<Prac> STRUCTURAL_DESIGN_PATTERNS_PRACS = List.of(
             new StaticProxyPrac(),
             //new FlyweightPrac(),
             //new FacadePrac(),
@@ -45,7 +71,7 @@ public class Pracs {
             new DefaultPrac()
     );
 
-    public static List<Prac> CREATIONAL_DESIGN_PATTERNS_PRACS = List.of(
+    private static final List<Prac> CREATIONAL_DESIGN_PATTERNS_PRACS = List.of(
             //new SingletonPrac(),
             //new PrototypePrac(),
             //new FactoryMethodsPrac(),
@@ -53,7 +79,7 @@ public class Pracs {
             //new AbstractFactoryPrac()
     );
 
-    public static List<Prac> CONCURRENCY_PRACS = List.of(
+    private static final List<Prac> CONCURRENCY_PRACS = List.of(
             //new AQSPrac(),
             //new ForkJoinPrac(),
             //new ThreadPoolPrac(),
@@ -62,15 +88,15 @@ public class Pracs {
             //new SynchronizationPrac()
     );
 
-    public static List<Prac> AOP_PRACS = List.of(
+    private static final List<Prac> AOP_PRACS = List.of(
             //new AopPrac()
     );
 
-    public static List<Prac> ANNOTATIONS_PRACS = List.of(
+    private static final List<Prac> ANNOTATIONS_PRACS = List.of(
             //new AnnotationPrac()
     );
 
-    public static List<Prac> INTERFACES_PRACS = List.of(
+    private static final List<Prac> INTERFACES_PRACS = List.of(
             //new ProxyPrac(),
             //new AnonymousInnerClassPrac(),
             //new InnerClassPrac(),
@@ -80,20 +106,20 @@ public class Pracs {
             //new CloneablePrac()
     );
 
-    public static List<Prac> REFLECTION_PRACS = List.of(
+    private static final List<Prac> REFLECTION_PRACS = List.of(
             //new MethodPrac(),
             //new CopyOfPrac(),
             //new ReflectionPrac()
     );
 
-    public static List<Prac> NETWORKS_PRACS = List.of(
+    private static final List<Prac> NETWORKS_PRACS = List.of(
             //new URLConnectionPrac(),
             //new EchoServerPrac(),
             //new InetAddressPrac(),
             //new SocketPrac()
     );
 
-    public static List<Prac> STREAMS_PRACS = List.of(
+    private static final List<Prac> STREAMS_PRACS = List.of(
             //new ParallelStreamPrac(),
             //new CollectResultPrac(),
             //new OptionalPrac(),
@@ -101,7 +127,7 @@ public class Pracs {
             //new CountLongWordsPrac()
     );
 
-    public static List<Prac> SECURITY_PRACS = List.of(
+    private static final List<Prac> SECURITY_PRACS = List.of(
             //new RSACryptPrac(),
             //new AESCryptPrac(),
             //new MessageDigestPrac(),
@@ -109,20 +135,20 @@ public class Pracs {
             //new ClassLoaderPrac()
     );
 
-    public static List<Prac> IO_PRACS = List.of(
+    private static final List<Prac> IO_PRACS = List.of(
             //new MemoryMapPrac(),
             //new ObjectStreamPrac(),
             //new RandomAccessFilePrac(),
             //new TextFilePrac()
     );
 
-    public static List<Prac> COLLECTIONS_PRACS = List.of(
+    private static final List<Prac> COLLECTIONS_PRACS = List.of(
             //new LinkedHashesPrac(),
             //new PriorityQueuePrac(),
             //new HashSetPrac()
     );
 
-    public static List<Prac> GENERICS_PRACS = List.of(
+    private static final List<Prac> GENERICS_PRACS = List.of(
             //new WildCardPrac(),
             //new GenericClassPrac()
     );
