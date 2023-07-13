@@ -42,7 +42,7 @@ import javaprac.gof.structural.proxy.*;
 public class Practices {
 
     public static List<Prac> getTestingPracs() {
-        return BEHAVIORAL_DESIGN_PATTERNS_PRACS;
+        return CONCURRENCY_PRACS;
     }
 
     private static final List<Prac> BEHAVIORAL_DESIGN_PATTERNS_PRACS = List.of(
@@ -80,12 +80,15 @@ public class Practices {
     );
 
     private static final List<Prac> CONCURRENCY_PRACS = List.of(
+            new CountDownLatchPrac(),
+            //new VisibilityPrac(),
             //new AQSPrac(),
             //new ForkJoinPrac(),
             //new ThreadPoolPrac(),
             //new CallableFuturePrac(),
             //new BlockingQueuePrac(),
             //new SynchronizationPrac()
+            new DefaultPrac()
     );
 
     private static final List<Prac> AOP_PRACS = List.of(
