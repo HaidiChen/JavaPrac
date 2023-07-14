@@ -80,7 +80,8 @@ public class Practices {
     );
 
     private static final List<Prac> CONCURRENCY_PRACS = List.of(
-            new InterruptionPrac(),
+            new AnotherThreadPoolPrac(),
+            //new InterruptionPrac(),
             //new CountDownLatchPrac(),
             //new VisibilityPrac(),
             //new AQSPrac(),
