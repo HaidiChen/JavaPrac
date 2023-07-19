@@ -44,7 +44,7 @@ import javaprac.gof.structural.proxy.*;
 public class Practices {
 
     public static List<Prac> getTestingPracs() {
-        return RPC_PRACS;
+        return IO_PRACS;
     }
 
     private static final List<Prac> RPC_PRACS = List.of(
@@ -150,10 +150,13 @@ public class Practices {
     );
 
     private static final List<Prac> IO_PRACS = List.of(
+        new NioChannelPrac(),
+        //new NioBufferPrac(),
         //new MemoryMapPrac(),
         //new ObjectStreamPrac(),
         //new RandomAccessFilePrac(),
-        //new TextFilePrac()
+        //new TextFilePrac(),
+        new DefaultPrac()
     );
 
     private static final List<Prac> COLLECTIONS_PRACS = List.of(
